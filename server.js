@@ -30,8 +30,12 @@ app.delete('/deletelink', (req,res) => { deletelink.handleDelete(req,res,db) })
 
 // const PORT = process.env.PORT; //from note 28
 // app.listen(PORT, () => {
-	app.listen(process.env.PORT || 3000, () => {
-	console.log(`Server is listening on port ${process.env.PORT}`)	
-	// console.log(process.env);
-	// console.log("PORT: ", PORT);	
+
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function() {
+  console.log("Server has started Successfully");
 });
